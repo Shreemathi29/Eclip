@@ -1,0 +1,38 @@
+default:
+  footerContent:
+    contactTitle: Contact Us
+    socialTitle: Follow Us
+    copyRightLogo: https://i.ibb.co/vcZPnwM/vlinder-logo.png
+    copyRightText: Vlinder Inc, 2020.
+    copyRightLink: https://www.vlinder.io/
+    contactDetail:
+      - key: address
+        icon: building-o
+        title:
+          TERRACE FLOOR, 837, 11TH CROSS, 26th Main Rd, 1st Sector, HSR Layout, Bengaluru,
+          Karnataka 560102
+      - key: phone
+        icon: phone
+        title: '+91 80437 74543'
+      - key: email
+        icon: envelope-o
+        title: info@vlinder.io
+    socialIcons:
+      - icon: https://i.ibb.co/8jdMD1q/linkedIn.png
+        link: https://www.linkedin.com/company/vlinder-io/
+      - icon: https://i.ibb.co/k693xvN/twitter.png
+        link: https://twitter.com/govlinder
+  share:
+    url: https://www.rcee.ac.in/
+    title: Blockchain verification of Certificate issued by Ramachandra College of Engineering
+    fbHashtag: '#Certification #Authenticity #Transparency, #Blockchain #vlinder.io'
+    WHashtag: '#Certification #Authenticity #Transparency, #Blockchain #vlinder.io'
+    separator: ":\n"
+    twitterHashtags:
+      - '#Certification'
+      - '#Authenticity'
+      - '#Transparency'
+      - '#Blockchain'
+      - '#vlinder.io'
+    twitterVia: GoVlinder
+    emailBody:

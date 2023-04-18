@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@loopback/build/config/tsconfig.common.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es2019",
+    "lib": ["es2019", "esnext.asynciterable"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": ["*"],
+      "@servers/*": ["servers/*"],
+      "@config/*": ["config/*"],
+      "@common/*": ["common/*"],
+      "@modules/*": ["modules/*"],
+      "@utils/*": ["utils/*"],
+      "@utils": ["utils/*"],
+      "@clients/*": ["clients/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", "src/**/*.proto"],
+  "exclude": ["node_modules","node_modules/@loopback", "src/**/*.test.ts", "src/**/*.setup.ts", "src/**/test.env.ts"]
+
+}

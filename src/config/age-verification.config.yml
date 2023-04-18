@@ -1,0 +1,12 @@
+default:
+  isAgeVerReq: true
+  age_popup_details:
+    wordings: 'You must be atleast 18 years Old'
+    checkbox_wording:
+    - data: 'By continuing further, you agree with Vlinder hyperlink1 and hyperlink2'
+      hyperlink1:
+        display_name: 'terms'
+        url: 'https://vlinder.io/terms'
+      hyperlink2:
+        display_name: 'privacy'
+        url: 'https://vlinder.io/privacy'

@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package ks1;
+
+service KS1Service {
+  rpc encode(EncodeRequest) returns (EncodeResponse);
+  rpc decode(DecodeRequest) returns (DecodeResponse);
+  rpc encrypt(EncryptRequest) returns (EncryptResponse);
+  rpc decrypt(DecryptRequest) returns (DecryptResponse);
+  rpc ks1Encrypt(KS1EncryptRequest) returns (KS1EncryptResponse);
+  rpc ks1EncryptBulkSNo(KS1EncryptBulkSNoRequest) returns (stream KS1EncryptBulkSNoResponse);
+  rpc ks1Decrypt(KS1DecryptRequest) returns (KS1DecryptResponse);
+
+};
+
+
+
+
+//---------------------->>>>----------------------------------------//
+
+message KS1EncryptBulkSNoRequest {
+  required string version = 1;
+  required KS1EncodeBulkSNoParam params = 2;
+  required string type = 3; //'nfc' or 'barcode'
+  optional string uid = 4; //if type is 'nfc', 'uid' is mandatory
+}
+
+message KS1EncodeBulkSNoParam{
+  optional string vc = 1; //fixedlength(2)
+  optional string nop = 2; //fixedlength(4)
+  required string org = 3; //fixedlength(4)
+  optional string batch = 4; //fixedlength(4)
+  required int32 serialNoStart = 5; //fixedlength(10)
+  required int32 serialNoEnd = 6; //fixedlength(10)
+}
+
+message KS1EncryptBulkSNoResponse {
+  optional string hash = 1;
+  optional int32 serialNo = 2;
+}
+
+
+
+
+// ---------------------------------
+message KS1EncodeParam {
+  optional string vc = 1; //fixedlength(2)
+  optional string nop = 2; //fixedlength(4)
+  required string org = 3; //fixedlength(4)
+  optional string batch = 4; //fixedlength(4)
+  optional string serialNo = 5; //fixedlength(10)
+}
+
+
+message KS1EncryptRequest {
+  required string version = 1;
+  required KS1EncodeParam params = 2;
+  required string type = 3; //'nfc' or 'barcode'
+  optional string uid = 4; //if type is 'nfc', 'uid' is mandatory
+}
+
+message KS1EncryptResponse {
+  required string hash = 1;
+}
+
+message KS1DecryptRequest {
+  required string version = 1;
+  required string hash = 2;
+  required string type = 3; //'nfc' or 'barcode'
+}
+
+message KS1DecryptResponse {
+  required DecryptResponse decrypted = 1;
+  optional DecodeResponse decoded = 2;
+}
+
+//---------------------->>>>----------------------------------------//
+
+message EncryptParam {
+  required string txId = 1;
+  optional string uid = 2; //if type is 'nfc', uid is mandatory
+}
+
+message EncryptRequest {
+  required string version = 1;
+  required EncryptParam params = 2;
+  required string type = 3; //'nfc' | 'barcode'
+}
+
+message EncryptResponse {
+  required string hash = 1;
+}
+
+message DecryptRequest {
+  required string version = 1;
+  required string hash = 2;
+  required string type = 3; // 'nfc' or 'barcode'
+}
+
+message DecryptResponse {
+  required string status = 1;
+  required string error_code = 2; //if no error, it will return empty string
+  optional string metaData = 3; //if no metadata, it will return empty string
+  optional string isTampered = 4;
+  optional bool isTamperTag = 5;
+  optional string tapCount = 6;
+  required string txId = 7;
+  optional string uid = 8;
+  required string originalHash = 9;
+}
+
+//---------------------->>>>----------------------------------------//
+
+message EncodeRequest {
+  required string version = 1;
+  required KS1EncodeParam params = 2;
+}
+
+message EncodeResponse {
+  required string hash = 1;
+}
+
+message DecodeRequest {
+  required string version = 1;
+  required string hash = 2;
+}
+
+message DecodeResponse {
+  required string originalBarcode = 1;
+  repeated DecodedElement elements = 2;
+}
+
+message DecodedElement {
+  required string ai = 1;
+  required string title = 2;
+  required string value = 3;
+  required string raw = 4;
+  required string meta = 5;
+}
+
+//---------------------->>>>----------------------------------------//

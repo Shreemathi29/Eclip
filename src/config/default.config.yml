@@ -1,0 +1,37 @@
+default:
+  ESConfig:
+    flushInterval: 2000
+    buffering: false
+  logger:
+    name: 'winston'
+  defaultVersion: '2021-07-18'
+  logging:
+    console:
+      level: 'silly'
+      handleExceptions: true
+  service:
+    check:
+      name: 'service health status'
+      notes: 'Does a ttl internally every 15 seconds'
+
+  mailConfig:
+    from: 'noreply@vlinder.io'
+    contactName: 'vlinder Labs Private Limited'
+    contactEmail: 'info@vlinder.io'
+    coreUserInvitationContent:
+      subject: Register with Vlinder Labs Demo
+      invitationURL: http://test.com
+    holderInvitationContent:
+      subject: Register with Vlinder Labs Demo
+      invitationURL: http://test.com
+
+  credential:
+    storeURL: 'http://test.com'
+    evidenceRoute: '/evidence-attachment'
+    deeplinkingURL: ''
+
+
+
+development:
+test:
+production:
